@@ -1,11 +1,13 @@
 import mongoose from "mongoose";
 
-const Connection = () => {
-    const URL = '';
+const Connection = async () => {
+    const URL = `mongodb+srv://rishashetty05:code4interview@crud-app.mbyqfps.mongodb.net/?retryWrites=true&w=majority&appName=crud-app`;
     try {
-        mongoose.connect(URL, { useUnifiedTopology : true, useNewUrlParser : true } );
-
+        await mongoose.connect(URL, { useUnifiedTopology : true, useNewUrlParser : true } ); //try mongoose.connect(URL) next time
+        console.log("Database connected successfully");
     } catch(error){
         console.log("Error while connecting to database ", error);
     }
 }
+
+export default Connection;
