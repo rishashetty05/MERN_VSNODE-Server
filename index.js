@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import bodyParser from 'body-parser';
 
 import Connection from './database/db.js';
 import Routes from './router/route.js';
@@ -8,6 +9,9 @@ import Routes from './router/route.js';
 const app = express();
 
 dotenv.config(); //INITILIZE
+
+ app.use(bodyParser.json({ extended: true }));//to handle post api body content sent form port 3000
+ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 
