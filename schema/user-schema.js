@@ -28,7 +28,7 @@ userSchema.pre("save", function (next) {
       { new: true, upsert: true }
     )
       .then(function (counter) {
-        doc.userId = counter.seq.toString();
+        doc.userId = counter.seq;
         next();
       })
       .catch(function (error) {
