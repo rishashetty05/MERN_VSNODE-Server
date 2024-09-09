@@ -28,8 +28,11 @@ export const getUsers =  async (request, response) => {
 export const getUser = async (request, response) => {
         console.log(request.params.id);
     try {
-        //const user = await User.find({userId: request.params.id});
-        const user = await User.findById(request.params.id);
+        // const user = await User.find({userId: request.params.id}); //mthd 1
+        
+        //const user = await User.findById(request.params.id); //mthd 2 results in error saying "http://localhost:8000/1  404 (Not Found)" when refreshing edit/{id} url 
+
+        const user = await User.findOne({userId: request.params.id}); //mthd 3
         response.status(200).json(user);
     } catch (error) {
         response.status(404).json({ message: error.message});
